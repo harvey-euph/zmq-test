@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+folder="build/Debug"
+
+if [ "$1" = "Release" ]; then
+    folder="build/Release"
+fi
+
+cd $folder
+make -j4 VERBOSE=1

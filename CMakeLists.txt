@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.20.0)
+
+project(CoreInfrastructure)
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -lpthread -pthread")
+add_definitions(-DBOOST_BIND_GLOBAL_PLACEHOLDERS)
+
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/Debug)
+    add_compile_definitions(ENABLE_DEBUG_LOGGER=1)
+else()
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/Release)
+endif()
+
+add_subdirectory(src)

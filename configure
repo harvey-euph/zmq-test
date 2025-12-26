@@ -1,0 +1,16 @@
+work_dir=$(pwd)
+build_dir=$(pwd)/build
+
+if [ ! -d "$build_dir" ]; then
+    mkdir $build_dir
+    mkdir $build_dir/Debug
+    mkdir $build_dir/Release
+fi
+
+echo "Configure debug cmake..."
+cd $build_dir/Debug 
+cmake $work_dir/ -DCMAKE_BUILD_TYPE=Debug
+
+echo "Configure release cmake..."
+cd $build_dir/Release
+cmake $work_dir/ -DCMAKE_BUILD_TYPE=Release
