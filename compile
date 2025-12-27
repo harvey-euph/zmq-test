@@ -7,4 +7,4 @@ if [ "$1" = "Release" ]; then
 fi
 
 cd $folder
-make -j4 VERBOSE=1
+make -j4 VERBOSE=0
